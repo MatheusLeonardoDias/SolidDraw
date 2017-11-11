@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.*?>
+
+<AnchorPane id="AnchorPaneMain" prefHeight="700.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="SourceCode.InterfaceController">
+    <children>
+        <Label fx:id="labelXY" />
+        <Label fx:id="labelXZ" />
+        <Label fx:id="labelZY" />
+        <Label fx:id="labelP" />
+        <Canvas fx:id="CanvasXY" layoutX="0.0" layoutY="0.0" />
+        <Canvas fx:id="CanvasXZ" layoutX="0.0" layoutY="325.0"  />
+        <Canvas fx:id="CanvasZY" layoutX="450.0" layoutY="0.0" />
+        <Canvas fx:id="CanvasP" layoutX="450.0" layoutY="325.0" />
+
+        <MenuBar fx:id="BarraMenu" layoutX="0.0" layoutY="0.0" prefHeight="30.0" prefWidth="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Arquivo">
+                    <items>
+                        <MenuItem fx:id="NovoMenu" mnemonicParsing="false" text="Novo" onAction="#NovoActionPerformed" />
+                        <MenuItem fx:id="AbrirMenu" mnemonicParsing="false" text="Abrir" onAction="#CarregarActionPerformed"/>
+                        <MenuItem fx:id="SalvarMenu" mnemonicParsing="false" text="Salvar" onAction="#SalvarActionPerformed"/>
+                        <MenuItem fx:id="SairMenu" mnemonicParsing="false" text="Sair" onAction="#SairActionPerformed"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Transformações">
+                    <items>
+                        <MenuItem fx:id="RotacaoMenu" mnemonicParsing="false" text="Rotação" onAction="#RotacaoActionPerformed" />
+                        <MenuItem fx:id="TranslacaoMenu" mnemonicParsing="false" text="Translação" onAction="#TranslacaoActionPerformed"/>
+                        <MenuItem fx:id="EscalaMenu" mnemonicParsing="false" text="Escala" onAction="#EscalaActionPerformed"/>
+                        <MenuItem fx:id="CisalhamentoMenu" mnemonicParsing="false" text="Cisalhamento" onAction="#CisalhamentoActionPerformed"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="2D">
+                    <items>
+                        <MenuItem fx:id="TamanhoDefinidoMenu" mnemonicParsing="false" text="Tamanho Definido" onAction="#TamanhoDefinidoActionPerformed"/>
+                        <MenuItem fx:id="MaoLivreMenu" mnemonicParsing="false" text="Mão Livre" onAction="#MaoLivreActionPerformed"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="3D">
+                    <items>
+                        <MenuItem fx:id="RevolucaoMenu" mnemonicParsing="false" text="Revolução" onAction="#RevolucaoActionPerformed"/>
+                        <MenuItem fx:id="ExtrusaoMenu" mnemonicParsing="false" text="Extrusão" onAction="#ExtrusaoActionPerformed"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Ferramentas">
+                    <items>
+                        <MenuItem fx:id="SelecionarPoligonoMenu" mnemonicParsing="false" text="Selecionar Polígono" onAction="#SelecionarPoligonoActionPerformed"/>
+                        <MenuItem fx:id="ExcluirPoligonoMenu" mnemonicParsing="false" text="Excluir Polígono Selecionado" onAction="#ExcluirPoligonoActionPerformed"/>
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Cena">
+                    <items>
+                        <MenuItem fx:id="OcultacaoMenu" mnemonicParsing="false" text="Ligar/Desligar Ocultação de Faces" onAction="#OcultacaoActionPerformed"/>
+                        <MenuItem fx:id="WireframePoligonoMenu" mnemonicParsing="false" text="Ligar/Desligar Wireframe" onAction="#WireframeActionPerformed"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Separator fx:id="SeparatorHorizontal" layoutX="0.0" layoutY="350.0" prefHeight="0.0" prefWidth="0.0" />
+        <Separator fx:id="SeparatorVertical" layoutX="0.0" layoutY="350.0" prefHeight="0.0" prefWidth="0.0" />
+        <TabPane fx:id="PainelLateral_A" layoutX="800.0" layoutY="30.0" prefHeight="0.0" prefWidth="100.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="2D">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="TamanhoDefinido" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#TamanhoDefinidoActionPerformed" />
+                                <Button fx:id="MaoLivre" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#MaoLivreActionPerformed" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                
+            </tabs>
+        </TabPane>
+        <TabPane fx:id="PainelLateral_B" layoutX="800.0" layoutY="30.0" prefHeight="0.0" prefWidth="100.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="3D">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="Revolucao" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#RevolucaoActionPerformed" />
+                                <Button fx:id="Extrusao" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#ExtrusaoActionPerformed" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                
+            </tabs>
+        </TabPane>
+        <TabPane fx:id="PainelLateral_C" layoutX="800.0" layoutY="30.0" prefHeight="0.0" prefWidth="100.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="TGs">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="332.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="Rotacao" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#RotacaoActionPerformed" />
+                                <Button fx:id="Translacao" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#TranslacaoActionPerformed" />
+                                <Button fx:id="Escala" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#EscalaActionPerformed" />
+                                <Button fx:id="Cisalhamento" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#CisalhamentoActionPerformed" />
+                                
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Pane fx:id="PainelPropriedades" >
+            <Label fx:id="labelEixo" />
+            <Label fx:id="labelRaio" />
+            <Label fx:id="labelVertices" />
+            <Label fx:id="labelBorda" />
+            <Label fx:id="labelFill" />
+            <ChoiceBox fx:id="EixoSelecionado"></ChoiceBox>
+            <Spinner fx:id="SpinnerRaio" layoutX="5.0" layoutY="622.0" prefHeight="25.0" prefWidth="80.0" min="0" max="500" initialValue="50" >
+                <editable>true</editable>
+            </Spinner>
+            <Spinner fx:id="SpinnerVertices" layoutX="5.0" layoutY="590.0" prefHeight="20.0" prefWidth="80.0" min="0" max="200" initialValue="4" >
+                <editable>true</editable>
+            </Spinner>
+            <Button fx:id="SelecionarPoligono" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#SelecionarPoligonoActionPerformed"/>
+            <Button fx:id="ExcluirPoligono" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#ExcluirPoligonoActionPerformed"/>
+            <Button fx:id="CorBorda" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#CorBordaActionPerformed" />
+            <Button fx:id="CorPreenchimento" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="" onAction="#CorPreenchimentoActionPerformed" />
+            <ColorPicker fx:id="CPBorda" prefHeight="40.0" prefWidth="40.0" />
+            <ColorPicker fx:id="CPObjeto" prefHeight="40.0" prefWidth="40.0" />
+        </Pane> 
+        <Button fx:id="MaximizeXY" onAction="#MaximizeXYActionPerformed"/>
+        <Button fx:id="MaximizeXZ" onAction="#MaximizeXZActionPerformed"/>
+        <Button fx:id="MaximizeZY" onAction="#MaximizeZYActionPerformed"/>
+        <Button fx:id="MaximizeP" onAction="#MaximizePActionPerformed"/>
+        
+    </children>
+</AnchorPane>
